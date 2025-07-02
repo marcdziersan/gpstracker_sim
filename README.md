@@ -73,4 +73,3 @@ this.lastLocation = { lat: 52.5200, lng: 13.4050 }; // Berlin
 
 ## Lizenz
 MIT-Lizenz - Nutzung für private und kommerzielle Zwecke erlaubt
-```
