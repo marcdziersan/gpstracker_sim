@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Bluetooth Tracker Simulation</title>
+    <link rel="stylesheet" href="tracker.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Bluetooth Tracker Simulation</h1>
+        
+        <div class="panel">
+            <h2>Device Status</h2>
+            <div class="status-container">
+                <div class="status-card">
+                    <div class="status-header">
+                        <span class="status-indicator disconnected" id="connection-indicator"></span>
+                        <span id="status-text">Disconnected</span>
+                        <span id="battery-indicator" class="battery-container battery-high">85%</span>
+                    </div>
+                    <div>Device: <span id="device-name">FnR-Tracker-6ACTAG6</span></div>
+                    <div>ID: <span id="device-id">xxxx-xxxx-xxxx</span></div>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-header">
+                        <span>Signal Strength</span>
+                    </div>
+                    <div class="signal-bar" id="signal-strength">
+                        <div class="signal-level"></div>
+                        <div class="signal-level"></div>
+                        <div class="signal-level"></div>
+                        <div class="signal-level"></div>
+                        <div class="signal-level"></div>
+                    </div>
+                    <div id="signal-value">0 dBm</div>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-header">
+                        <span>Device Info</span>
+                    </div>
+                    <div>Firmware: v<span id="firmware-version">1.2.3</span></div>
+                    <div>Hardware: <span id="hardware-revision">RevB</span></div>
+                    <div>Last seen: <span id="last-seen">-</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Actions</h2>
+            <div>
+                <button class="btn" id="scan-btn" onclick="deviceManager.scanForDevices()">
+                    <span>🔍</span> Scan for Devices
+                </button>
+                <button class="btn btn-success" id="connect-btn" onclick="deviceManager.connectToDevice()" disabled>
+                    <span>🔗</span> Connect
+                </button>
+                <button class="btn btn-danger" id="disconnect-btn" onclick="deviceManager.disconnectDevice()" disabled>
+                    <span>✖</span> Disconnect
+                </button>
+                <button class="btn" id="beep-btn" onclick="trackerCard.playSound()" disabled>
+                    <span>🔊</span> Play Sound
+                </button>
+                <button class="btn" id="location-btn" onclick="trackerCard.updateLocation()" disabled>
+                    <span>📍</span> Update Location
+                </button>
+                <button class="btn" id="battery-btn" onclick="trackerCard.checkBattery()" disabled>
+                    <span>🔋</span> Check Battery
+                </button>
+                <button class="btn btn-warning" id="reset-btn" onclick="trackerCard.factoryReset()" disabled>
+                    <span>🔄</span> Factory Reset
+                </button>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Location Tracking</h2>
+            <div id="map-container">
+                <iframe id="map" frameborder="0"></iframe>
+            </div>
+            <div id="location-info" style="margin-top: 10px;"></div>
+            
+            <div class="location-history">
+                <h3>Location History <small>(Last 5 updates)</small></h3>
+                <div id="history-list"></div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Event Log</h2>
+            <div class="progress-container">
+                <div class="progress-bar" id="battery-bar"></div>
+            </div>
+            <div class="log" id="event-log"></div>
+        </div>
+    </div>
+
+   <script src="tracker.js"></script>
+</body>
+</html>
